@@ -8,8 +8,8 @@
     <properties resource="jdbc.properties"/>
     
     <typeAliases>
-        <!--<package name="com.fz.mybatis.domain"/>-->
-        <typeAlias type="com.fz.mybatis.domain.UserDo" alias="UserDo"/>
+        <package name="com.fz.mybatis.domain"/>
+        <!--<typeAlias type="com.fz.mybatis.domain.UserDo" alias="UserDo"/>-->
     </typeAliases>
     
     <environments default="development">
