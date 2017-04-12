@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.fengze.mybatis.mapper.UserMapper">
+<mapper namespace="com.fz.mybatis.mapper.UserMapper">
 
     <select id="queryById" parameterType="UserDo" resultType="UserDo">
         SELECT USER_ID USERID,USER_NAME USERNAME, PASS_WORD PASSWORD FROM TB_USER WHERE USER_ID=#{userId}

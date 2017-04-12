@@ -44,6 +44,6 @@
         <!-- 通过mapper元素的url属性可以指定一个通过URL请求道的Mapper.xml文件 -->
         <!--<mapper url="file:///E:/UserMapper.xml"/>-->
         <!-- 通过mapper元素的class属性可以指定一个Mapper接口进行注册 -->
-        <mapper class="com.fz.mybatis.mapper.UserMapper"/>
+        <mapper class="com.fz.mybatis.mapper.UserMapper"/>-->
     </mappers>
 </configuration>

@@ -26,7 +26,7 @@ public class UserMapperTest {
     public void setUp() throws Exception {
         String resource = "mybatis-config.xml";
         InputStream inputStream = Resources.getResourceAsStream(resource);
-        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         session = sqlSessionFactory.openSession(true);
         //默认创建session是false 手动提交事务，如果设置true 自动提交事物
         //也可以理解为 false：开启事物  true：关闭事物
@@ -68,7 +68,7 @@ public class UserMapperTest {
 
         List<UserDo> list=mapper.queryByList(userDo);
 
-        for(UserDo u:list){
+        for (UserDo u:list){
             log.info("UserDo: {}",u);
         }
     }
