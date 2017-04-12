@@ -30,7 +30,7 @@ public class UserDaoTest {
         session = sqlSessionFactory.openSession(true);
         //默认创建session是false 手动提交事务，如果设置true 自动提交事物
         //也可以理解为 false：开启事物  true：关闭事物
-        //session=sqlSessionFactory.openSession(true);
+        //session=sqlSessionFactory.openSession();
     }
 
     @After
@@ -94,9 +94,21 @@ public class UserDaoTest {
         user.setUserId(1012L);
         user.setPassword("654321");
 
-        Integer it=session.update("user.modifyUser",user);
+        Integer it=session.update("user.modifyUser", user);
 
         log.info("修改影响的行数: {}", it);
+
+        session.commit();
+    }
+
+    @Test
+    public void testDelUser() throws Exception {
+        UserDo user=new UserDo();
+        user.setUserId(1003L);
+
+        Integer it=session.delete("user.delUser", user);
+
+        log.info("删除影响的行数: {}", it);
 
         session.commit();
     }

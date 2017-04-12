@@ -30,4 +30,11 @@
     <update id="modifyUser" parameterType="UserDo">
         UPDATE SET USER_ID=#{userId} WHERE USER_ID=#{userId}
     </update>
+
+    <!-- 如果有>=这种符号 需要在语句外部加  <![CDATA[   sql语句   ]]>括起来 -->
+    <delete id="delUser" parameterType="UserDo">
+        <![CDATA[
+           DELETE FROM TB_USER WHERE USER_ID=#{userId}
+        ]]>
+    </delete>
 </mapper>
