@@ -36,7 +36,7 @@
     <!--重要 3.当单独扫描xml映射文件时，则是正确的，因我们配置了namespace就是Mapper接口的全路径类名-->
     <mappers>
         <!--<mapper resource="mapper/userMapper.xml"/>-->
-        <mapper resource="mapper/UserMapper.xml"/>
+        <mapper resource="mapper1/UserMapper.xml"/>
         <!-- 通过mapper元素的resource属性可以指定一个相对于类路径的Mapper.xml文件 -->
         <!--<mapper resource="com/fengze/mybatis/mapper/UserMapper.xml"/>-->
         <!-- 通过package元素将会把指定包下面的所有Mapper接口进行注册 -->
