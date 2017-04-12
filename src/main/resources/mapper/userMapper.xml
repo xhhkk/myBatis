@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!--命名空间 （姓）-->
-<mapper namespace="com.fz.mybatis.mapper.UserMapper">
+<mapper namespace="user">
     <!--                        参数                  结果          -->
     <select id="queryById" parameterType="UserDo" resultType="UserDo">
         SELECT USER_ID USERID,USER_NAME USERNAME,PASS_WORD PASSWORD FROM TB_USER where USER_ID=#{userId}

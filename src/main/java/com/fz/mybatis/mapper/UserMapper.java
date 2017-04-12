@@ -1,4 +1,4 @@
-package mapper;
+package com.fz.mybatis.mapper;
 
 import com.fz.mybatis.domain.UserDo;
 

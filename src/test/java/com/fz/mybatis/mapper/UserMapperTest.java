@@ -1,4 +1,4 @@
-package com.fz.mybatis.dao;
+package com.fz.mybatis.mapper;
 
 import com.fz.mybatis.domain.UserDo;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +18,7 @@ import static org.junit.Assert.*;
  * Created by Administrator on 2017/4/11.
  */
 @Slf4j
-public class UserDaoTest {
+public class UserMapperTest {
     SqlSessionFactory sqlSessionFactory;
     SqlSession session;
 
@@ -40,69 +40,70 @@ public class UserDaoTest {
 
     @Test
     public void testQueryById() throws Exception {
-        UserDo user=new UserDo();
+        UserDo userDo=new UserDo();
         /* user.setUserId(Long.valueOf(1000)); */
-        user.setUserId(1000L);
+        userDo.setUserId(1000L);
 
-        UserDo ud=session.selectOne("user.queryById",user);
+        UserMapper mapper=session.getMapper(UserMapper.class);
+        UserDo user=mapper.queryById(userDo);
 
-        log.info("UserDo:{}", ud);
+        log.info("User : {}", user);
     }
 
     @Test
     public void testFindById() throws Exception {
+        UserMapper mapper = session.getMapper(UserMapper.class);
 
-        UserDo user = session.selectOne("user.findById", 1000);
+        UserDo user = mapper.findById(1000);
 
-        log.info("UserDo : {}", user);
+        log.info("User: {}", user);
     }
 
     @Test
     public void testQueryByList() throws Exception {
-        UserDo user=new UserDo();
-        user.setAddress("南");
+        UserDo userDo=new UserDo();
+        userDo.setAddress("南");
 
-        List<UserDo> list=session.selectList("user.queryByList", user);
+        UserMapper mapper=session.getMapper(UserMapper.class);
+
+        List<UserDo> list=mapper.queryByList(userDo);
 
         for(UserDo u:list){
-            log.info("user:{}",user);
+            log.info("UserDo: {}",u);
         }
     }
 
     @Test
-    public void testFindByList() throws Exception {
-        UserDo user=session.selectOne("user.findByList",1000);
-
-        log.info("UserDo:{}", user);
-    }
-
-    @Test
     public void testAddUser() throws Exception {
-        UserDo user=new UserDo();
+        UserDo userDo=new UserDo();
 
-        user.setUserName("zs");
-        user.setPassword("123456");
-        user.setRealName("赵四");
-        user.setEmail("zs123@qq.com");
-        user.setCellphone("13612538456");
-        user.setAddress("北京");
-        user.setUserType("1");
+        userDo.setUserName("zs");
+        userDo.setPassword("123456");
+        userDo.setRealName("赵四");
+        userDo.setEmail("zs123@qq.com");
+        userDo.setCellphone("13612538456");
+        userDo.setAddress("北京");
+        userDo.setUserType("1");
 
-        Integer it=session.insert("user.addUser",user);
+        UserMapper mapper=session.getMapper(UserMapper.class);
+
+        Integer it=mapper.addUser(userDo);
         /*//默认情况下mybatis是手动提交的（开启事务的）
         session.commit();*/
 
-        log.info("新增影响的行数: {}", it);
+        log.info("新增影响的行数: {}",it);
     }
 
     @Test
     public void testModifyUser() throws Exception {
-        UserDo user = new UserDo();
+        UserDo userDo=new UserDo();
 
-        user.setUserId(1012L);
-        user.setPassword("654321");
+        userDo.setUserId(1012L);
+        userDo.setPassword("654321");
 
-        Integer it=session.update("user.modifyUser", user);
+        UserMapper mapper=session.getMapper(UserMapper.class);
+
+        Integer it=mapper.modifyUser(userDo);
 
         log.info("修改影响的行数: {}", it);
     }
@@ -112,21 +113,10 @@ public class UserDaoTest {
         UserDo user=new UserDo();
         user.setUserId(1003L);
 
-        Integer it=session.delete("user.delUser", user);
+        UserMapper mapper=session.getMapper(UserMapper.class);
+
+        Integer it=mapper.delUser(user);
 
         log.info("删除影响的行数: {}", it);
-    }
-
-    @Test
-    public void testSelectUserOne() throws Exception {
-        UserDo user = session.selectOne("user.queryUserById",1000);
-
-//        UserMapper mapper = session.getMapper(UserMapper.class);
-
-//        List<UserDo> user = session.selectList("user.queryUserById",1000);
-
-//        UserDo user = mapper.queryUserById(1000);
-
-        log.info("user:{}",user);
     }
 }
