@@ -30,4 +30,7 @@
         DELETE FROM TB_USER WHERE USER_ID=#{userId}
     </delete>
 
+    <insert id="insertUser" parameterType="UserDo">
+        INSERT INTO TB_USER
+    </insert>
 </mapper>
